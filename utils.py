@@ -65,7 +65,8 @@ def read_board() -> list:
 
     return board
 
-
+def casilla_libre(board, player_id):
+    return board[player_id]== " "
 
 def decide_move(board: list, player_id: str) -> list:    
     """
@@ -86,7 +87,7 @@ def decide_move(board: list, player_id: str) -> list:
                 esquinas_vacias.append(i)
         demas_vacias = []
         for i in [1,3,5,7]:
-            if casillas_libre(board, i):
+            if casilla_libre(board, i):
                 demas_vacias.append(i)
         if len(esquinas_vacias) > 0:
             return randint.choice (esquinas_vacias)
@@ -96,7 +97,7 @@ def decide_move(board: list, player_id: str) -> list:
     if player_2 == "O":
         contador = 0 
         for i in range (9):
-            if casillas_libre (board, i):
+            if casilla_libre (board, i):
                 contador +=1
         if contador == 7: 
             if board[4] == " ":
@@ -104,11 +105,10 @@ def decide_move(board: list, player_id: str) -> list:
 
     while True: 
         casilla = randint(0,8)
-        if no casilla_libre (board, )
-
-
-
-
+        if not casilla_libre (board, player_id):
+            casilla = randint (0,8)
+        else:
+            return casilla
 
 
 def validate_move(board: list, move: list) -> bool:
