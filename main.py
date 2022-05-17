@@ -6,7 +6,7 @@ import utils
 def main():
 
     NAME = "Kris"
-    print("\n------- Starting tic-tac-toe bot -------\n")
+    print("\n------- Starting tic-tac-toe yo -------\n")
 
     # Register phase begins
     registry_open = utils.is_registry_open()
