@@ -66,7 +66,8 @@ def read_board() -> list:
     return board
 
 
-def decide_move(board: list, player_id: str) -> list:
+
+def decide_move(board: list, player_id: str) -> list:    
     """
     Decides next move to make.
     """
@@ -75,12 +76,39 @@ def decide_move(board: list, player_id: str) -> list:
         player_2 = 'O'
     else:
         player_2='X'
-    
+    # cuando lo toque X
+    if player_2 == 'X': 
+        if board [4]== " ":
+            return 4
+        esquinas_vacias= []
+        for i in [0,2,6,8]:
+            if casilla_libre(board, i):
+                esquinas_vacias.append(i)
+        demas_vacias = []
+        for i in [1,3,5,7]:
+            if casillas_libre(board, i):
+                demas_vacias.append(i)
+        if len(esquinas_vacias) > 0:
+            return randint.choice (esquinas_vacias)
+        else: 
+            return randint.choice(demas_vacias)
+
+    if player_2 == "O":
+        contador = 0 
+        for i in range (9):
+            if casillas_libre (board, i):
+                contador +=1
+        if contador == 7: 
+            if board[4] == " ":
+                return 4 
+
+    while True: 
+        casilla = randint(0,8)
+        if no casilla_libre (board, )
 
 
-    '''row = randint(0, 2)'''
-    '''column = randint(0, 2)'''
-    return [row, column]
+
+
 
 
 def validate_move(board: list, move: list) -> bool:
