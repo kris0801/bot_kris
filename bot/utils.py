@@ -3,6 +3,8 @@
 """
 from random import randint
 from re import X
+from sqlite3 import Row
+from tkinter.tix import COLUMN
 import requests
 from urllib.parse import unquote
 
@@ -72,45 +74,71 @@ def decide_move(board: list, player_id: str) -> list:
     """
     Decides next move to make.
     """
+    
     player_2= None 
     if player_id == 'X':
         player_2 = 'O'
     else:
         player_2='X'
     # cuando lo toque X
-    if player_2 == 'X': 
-        if board [4]== "-":
-            return 4
-        esquinas_vacias= []
-        for i in [0,2,6,8]:
-            if casilla_libre(board, i):
-                esquinas_vacias.append(i)
-        demas_vacias = []
-        for i in [1,3,5,7]:
-            if casilla_libre(board, i):
-                demas_vacias.append(i)
-        if len(esquinas_vacias) > 0:
-            return randint.choice (esquinas_vacias)
-        else: 
-            return randint.choice(demas_vacias)
+    
+    if player_id == 'X': 
+        if board[1][1]== "-":
+            return [1,1]
 
-    if player_2 == "O":
-        contador = 0 
-        for i in range (9):
-            if casilla_libre (board, i):
-                contador +=1
-        if contador == 7: 
-            if board[4] == "-":
-                return 4 
+        esquinas_vacias == [[0][0],[0][2],[2][0],[2][2]]
+        if board[0][0]== "-":
+            return [0,0] 
+        elif board[0][2]== "-":
+            return [0,2] 
 
-    while True: 
-        casilla = randint(0,8)
-        if not casilla_libre (board, player_id):
-            casilla = randint (0,8)
-        else:
-            return casilla
+        elif board[2][0]== "-":
+            return [2,0] 
+        elif board[2][2]== "-":
+            return [2,2]
+             
+        demas_vacias == [[0][1],[1][0],[1][1],[1][2],[2][1]]
+        if board[0][1]== "-":
+            return [0,1] 
+        elif board[1][0]== "-":
+            return [1,0] 
 
+        elif board[1][1]== "-":
+            return [1,1] 
+        elif board[1][2]== "-":
+            return [1,2]
+        elif board[2][1]== "-":
+            return [2,1]
+    
 
+    if player_id == "O":
+        if board[1][1]== "-":
+            return [1,1]
+
+        esquinas_vacias= "-"
+        if board[0][0]== "-":
+            return [0,0] 
+        elif board[0][2]== "-":
+            return [0,2] 
+        elif board[2][0]== "-":
+            return [2,0] 
+        elif board[2][2]== "-":
+            return [2,2]
+
+        demas_vacias = "-"
+        if board[0][1]== "-":
+            return [0,1] 
+        elif board[1][0]== "-":
+            return [1,0] 
+
+        elif board[1][1]== "-":
+            return [1,1] 
+        elif board[1][2]== "-":
+            return [1,2]
+        elif board[2][1]== "-":
+            return [2,1]
+    
+        
 def validate_move(board: list, move: list) -> bool:
     """
     Checks if the desired next move hits an empty position.
