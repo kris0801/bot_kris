@@ -66,7 +66,7 @@ def read_board() -> list:
     return board
 
 def casilla_libre(board, player_id):
-    return board[player_id]== " "
+    return board[player_id]== "-"
 
 def decide_move(board: list, player_id: str) -> list:    
     """
@@ -79,7 +79,7 @@ def decide_move(board: list, player_id: str) -> list:
         player_2='X'
     # cuando lo toque X
     if player_2 == 'X': 
-        if board [4]== " ":
+        if board [4]== "-":
             return 4
         esquinas_vacias= []
         for i in [0,2,6,8]:
@@ -100,7 +100,7 @@ def decide_move(board: list, player_id: str) -> list:
             if casilla_libre (board, i):
                 contador +=1
         if contador == 7: 
-            if board[4] == " ":
+            if board[4] == "-":
                 return 4 
 
     while True: 
