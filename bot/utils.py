@@ -86,7 +86,7 @@ def decide_move(board: list, player_id: str) -> list:
         if board[1][1]== "-":
             return [1,1]
 
-        esquinas_vacias == []
+        esquinas_vacias == "-"
         if board[0][0]== "-":
             return [0,0] 
         elif board[0][2]== "-":
@@ -97,7 +97,7 @@ def decide_move(board: list, player_id: str) -> list:
         elif board[2][2]== "-":
             return [2,2]
              
-        demas_vacias == []
+        demas_vacias == "-"
         if board[0][1]== "-":
             return [0,1] 
         elif board[1][0]== "-":
@@ -115,7 +115,7 @@ def decide_move(board: list, player_id: str) -> list:
         if board[1][1]== "-":
             return [1,1]
 
-        esquinas_vacias= []
+        esquinas_vacias= "-"
         if board[0][0]== "-":
             return [0,0] 
         elif board[0][2]== "-":
@@ -125,7 +125,7 @@ def decide_move(board: list, player_id: str) -> list:
         elif board[2][2]== "-":
             return [2,2]
 
-        demas_vacias = []
+        demas_vacias = "-"
         if board[0][1]== "-":
             return [0,1] 
         elif board[1][0]== "-":
